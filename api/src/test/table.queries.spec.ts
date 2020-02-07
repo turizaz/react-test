@@ -40,6 +40,7 @@ describe('test db', function () {
             })
     })
     it('test save to db db error', function(done) {
+        sinon.stub(model, 'getAll').usingPromise(Promise).resolves({rows: Array(1)})
         sinon.stub(model, 'save').usingPromise(Promise).rejects('db error')
         chai.request(server)
             .post('/api')
@@ -50,12 +51,25 @@ describe('test db', function () {
             })
     })
     it('test save to db success', function(done) {
+        sinon.stub(model, 'getAll').usingPromise(Promise).resolves({rows: Array(1)})
         sinon.stub(model, 'save').usingPromise(Promise).resolves(true);
         chai.request(server)
             .post('/api')
             .send({text: 'text'})
             .end(function (err, res) {
                 assert.equal(res.statusCode, 200)
+                done()
+            })
+    });
+
+    it('test save to db limit reached', function(done) {
+        sinon.stub(model, 'getAll').usingPromise(Promise).resolves({rows: Array(10)})
+        sinon.stub(model, 'save').usingPromise(Promise).resolves(true);
+        chai.request(server)
+            .post('/api')
+            .send({text: 'text'})
+            .end(function (err, res) {
+                assert.equal(res.statusCode, 403)
                 done()
             })
     });
