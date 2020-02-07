@@ -16,19 +16,14 @@ export default (state = defaultState, action: Iac) => {
         case RECORD_ADDED:
             return state
                 .update('error', () => '')
-                .update('entities', (entities) => {
-                    return [...entities, payload]
-                })
+                .update('entities', (entities) => [...entities, payload])
         case LOAD_RECORDS + FAIL:
             return state.update('error', () => 'connection error')
         case LOAD_RECORDS + SUCCESS:
             return state
                 .update('error', () => '')
-                .update('loaded', () => {
-                    return true;
-                }).update('entities', () => {
-                    return payload.data
-                });
+                .update('loaded', () => true)
+                .update('entities', () => payload.data);
         case RECORD_ADDED_FAILED:
             return state.update('error', () => payload)
         default:
