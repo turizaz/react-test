@@ -5,6 +5,7 @@ import {Record} from 'immutable'
 const ReducerState = Record({
     loaded: false,
     error: '',
+// eslint-disable-next-line
     entities: new Array()
 });
 const defaultState = new ReducerState();
