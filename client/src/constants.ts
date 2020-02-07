@@ -1,0 +1,6 @@
+export const RECORD_ADDED = 'RECORD_ADDED'
+export const RECORD_ADDED_FAILED = 'RECORD_ADDED_FAILED'
+export const LOAD_RECORDS = 'LOAD_RECORDS'
+export const START = '_START'
+export const FAIL = '_FAIL'
+export const SUCCESS = '_SUCCESS'
