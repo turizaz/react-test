@@ -40,14 +40,14 @@ class Table extends React.Component {
         const {table} = this.props
         if(table.loaded === false) {
             if(table.error) {
-               return (<Alert severity="error">Connection error</Alert>)
+               return (<Alert severity="error">{table.error}</Alert>)
             }
             return (<div>Loading ...</div>)
         }
         return (
             <div className="App">
-                <div>{ table.error === 'Error: Limit reached' && <Alert severity="error">Limit reached</Alert> }</div>
-                <div>{ table.error && table.error !== 'Error: Limit reached' && <Alert severity="error">Connection error</Alert> }</div>
+                <div>{ table.error === 'Error: Limit reached' && <Alert severity="error">limit reached</Alert> }</div>
+                <div>{ table.error && table.error !== 'Error: Limit reached' && <Alert severity="error">connection error</Alert> }</div>
                 <TableContainer component={Paper}>
                     <MaterialTable aria-label="simple table">
                         <TableBody>
