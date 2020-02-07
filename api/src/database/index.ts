@@ -1,15 +1,14 @@
+const config = require('./knexfile')
+
 const db = require('knex')({
     client: 'pg',
     version: '7.2',
     connection: {
-        host : 'postgres',
-        user : 'postgres',
-        password : 'password',
-        database : 'postgres'
+        host : config.development.connection.host,
+        user : config.development.connection.user,
+        password : config.development.connection.password,
+        database : config.development.connection.database
     },
-    migrations: {
-        directory: __dirname + '/../db/migrations',
-        tableName: 'knex-migrations',
-    },
+    migrations:  config.development.migrations
 });
 export default db
