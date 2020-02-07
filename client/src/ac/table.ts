@@ -14,7 +14,6 @@ export function addRecord(text: string) {
                 await TableService.add(text)
                 dispatch(recordAdded(text))
             } catch (error) {
-                console.log(error)
                 dispatch(recordAddedFailed(error))
             }
         })()
@@ -26,9 +25,9 @@ export function recordAdded(text: string): Iac {
         payload: text,
     }
 }
-export function recordAddedFailed(error: string) {
+export function recordAddedFailed(error: Error) {
     return {
         type: RECORD_ADDED_FAILED,
-        payload: error
+        payload: error.toString()
     }
 }

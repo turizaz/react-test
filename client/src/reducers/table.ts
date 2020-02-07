@@ -29,8 +29,7 @@ export default (state = defaultState, action: Iac) => {
                     return payload.data
                 });
         case RECORD_ADDED_FAILED:
-            console.log(payload)
-            return state.update('error', () => '')
+            return state.update('error', () => payload)
         default:
             return state
     }
