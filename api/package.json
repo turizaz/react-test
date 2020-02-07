@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/server.ts",
-    "migrate": "knex migrate:latest --knexfile /app/src/knexfile.js",
+    "migrate": "knex migrate:latest --knexfile /app/src/database/knexfile.js",
     "start": "ts-node dist/server.js",
     "test": "mocha --require ./node_modules/ts-node/register ./src/test/**/*.ts --exit",
     "build": "tsc -p ."
