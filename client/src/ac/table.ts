@@ -5,11 +5,11 @@ export function loadRecords(): Igetter {
     return {
         type: LOAD_RECORDS,
         callApi: `/api`,
-    };
+    }
 }
 export function addRecord(text: string) {
     return (dispatch: any) => {
-        (async ()=>{
+        (async () => {
             try {
                 await TableService.add(text)
                 dispatch(recordAdded(text))
