@@ -1,3 +1,3 @@
 export interface IKnexResponse {
-    rows: string[]
+    rows: Array<string>
 }
